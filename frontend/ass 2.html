@@ -1,0 +1,84 @@
+<html>
+    <head>
+         <title>Grid</title>
+        <link rel="stylesheet" href="grid.css">
+        <style>                
+        .temp {
+            border: 2px solid black;
+            width: 30%;
+            margin-left: 10%;
+            margin-top: 5%;
+            padding: 30px;
+            text-size-adjust: 50px;
+            background-color: rgb(15, 138, 142);
+        }
+        .form{
+            display: grid;
+            grid-template-areas: 1fr 2fr;
+            grid-gap: 5px;
+        }
+        label[for="name"]::after,
+        label[for="email"]::after,
+        label[for="gender"]::after,
+        label[for="password"]::after,
+        label[for="confirm password"]::after{
+            content: " :";
+            font-weight: bold;
+        }
+        .gender-options {
+            background-color: rgb(4, 78, 34);
+            padding: 8px;
+            border-radius: 6px;
+        }
+        .gender-options label {
+            margin-right: 15px;
+        }
+        button{
+            grid-template-columns: span 2;
+            text-align: center;
+            background-color: rgb(19, 118, 60);
+        }
+       
+
+        </style>
+    </head>
+    <body>
+        <div class="temp">
+            <form class="form">
+                <strong>
+                <label for=" Full name">Name</label>
+                <input type="text"><br>
+                <label for="email">Email</label>
+                <input for="text"><br>
+                <label for="course selection">Course Selection</label>
+                <input type="text">
+                </strong>
+                <div>
+                <input type="radio" id="cse" name="course" value="cse">cse</button>
+                <input type="radio" id="csm" name="course" value="csm">csm</button>
+                <input type="radio" id="csd" name="course" value="csd">csd</button><br>
+                </div>
+                <strong>
+                <label for="gender">Gender</label>
+                <input type="text">
+                </strong>
+                <div>
+            
+                <input type="radio" id="male" name="gender" value="Male">Male</button>
+           
+                <input type="radio" id="female" name="gender" value="Female">Female</button><br>   
+                </div>
+                <strong>
+                <label for="password">password</label>
+                <input for="text"><br>  
+                <label for="confirm password">confirm password</label>
+                <input for="text"><br>
+                </strong>
+             
+                   
+                <button type="Register" value="Register">Register</button> 
+                
+            </form>
+        </div>
+    </body>
+</html>
