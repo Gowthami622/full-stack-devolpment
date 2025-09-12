@@ -68,30 +68,6 @@ else
     console.log("poor")
 
 
-//distance
-function calculateDistance(totalMinutes, initialSpeed, maxSpeed) {
-    let speed = initialSpeed;
-    let distance = 0;
-    let timeRemaining = totalMinutes;
-
-    while (timeRemaining > 0) {
-        let segmentTime = Math.min(10, timeRemaining);
-        distance += speed * (segmentTime / 60);
-        timeRemaining -= segmentTime;
-
-        // Double speed but cap at maxSpeed
-        speed = Math.min(speed * 2, maxSpeed);
-    }
-
-    return distance;
-}
-
-const totalTime = 96; // in minutes
-const initialSpeed = 30; // km/h
-const maxSpeed = 120; // km/h
-
-const distance = calculateDistance(totalTime, initialSpeed, maxSpeed);
-console.log(`Distance traveled: ${distance.toFixed(2)} km`);
 
 
 
@@ -117,4 +93,13 @@ for(i=10;i<=90;i+10)
 }
 }
 distance=distance+speed/10;
-console.log(distancenode)
+console.log(distance)
+
+
+
+
+
+
+
+
+
