@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <title>To do list with conditional Complete button</title>
+  <style>
+    .complete-btn {
+      margin-left: 10px;
+      cursor: pointer;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 4px 8px;
+      border-radius: 3px;
+      display: none; /* hide by default */
+    }
+    .done {
+      text-decoration: line-through;
+      color: gray;
+    }
+    .complete-btn:disabled {
+      background-color: gray;
+      cursor: default;
+    }
+  </style>
+</head>
+<body>
+  <h1>To do list</h1>
+
+  <ul id="list">
+    <li>Item 1 <button class="complete-btn">Complete</button></li>
+  </ul>
+
+  <input type="text" id="myInput" placeholder="Add new item">
+  <button id="add">Add Item</button>
+
+  <script>
+    $(document).ready(function () {
+      
+      // Function to create a Complete button and append it to an <li>
+      function addCompleteButton(li) {
+        let btn = $('<button class="complete-btn">Complete</button>');
+        btn.click(function() {
+          $(this).prop('disabled', true);
+          $(this).parent().addClass('done');
+        });
+        li.append(" ").append(btn);
+        return btn;
+      }
+
+      // Initialize existing list items
+      $("#list li").each(function() {
+        // Add Complete button if not exists
+        if ($(this).find(".complete-btn").length === 0) {
+          addCompleteButton($(this));
+        }
+      });
+
+      // Show Complete button on existing item if hidden
+      function showCompleteButtonForItem(taskText) {
+        let found = false;
+        $("#list li").each(function() {
+          let text = $(this).clone()    // clone element
+            .children()                 // select all child elements
+            .remove()                   // remove all child elements
+            .end()                      // go back to selected element
+            .text().trim().toLowerCase();
+          
+          if (text === taskText.toLowerCase()) {
+            found = true;
+            let btn = $(this).find(".complete-btn");
+            if (btn.length && btn.css("display") === "none" && !btn.prop("disabled")) {
+              btn.show();
+            }
+            // If already done (disabled), do nothing
+            return false; // break each loop
+          }
+        });
+        return found;
+      }
+
+      // Add item button click
+      $("#add").click(function() {
+        let task = $("#myInput").val().trim();
+        if (!task) return;
+
+        let exists = showCompleteButtonForItem(task);
+
+        if (exists) {
+          alert(`"${task}" already exists! Showing its Complete button.`);
+        } else {
+          // Create new li and complete button visible
+          let li = $("<li></li>").text(task);
+          let btn = addCompleteButton(li);
+          btn.show();  // show complete button immediately for new items
+          $("#list").append(li);
+        }
+
+        $("#myInput").val('');
+      });
+
+    });
+  </script>
+</body>
+</html>
