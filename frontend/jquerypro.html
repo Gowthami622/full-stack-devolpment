@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <title>Add lists</title>
+</head>
+<body>
+    <h1>To do list</h1>
+
+    <ul id="list">
+      <li>Item 1</li>
+    </ul>
+    <input type="text" id="myInput">
+    <button id="add">Add Item</button>
+</body>
+<head>
+
+</head>
+</html>
+<script>
+  $(document).ready(function () {
+    $("#add").click(function(){
+      
+      let task=$("#myInput").val();
+      if(task){
+        $("#list").append("<li>" + task +"</li>");
+        $("#myInput").val('');
+         $("#list").css("background-color", "orange");
+        $("#add").css("font-weight", "bold");
+        $("h1").css("color", "red");
+        $("#add").css("background-color", "green");
+      }
+    });
+  });
+</script>
