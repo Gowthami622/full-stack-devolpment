@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>News Report</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #222;
+    }
+    .item {
+      border: 1px solid #ccc;
+      margin: 10px;
+      padding: 15px;
+      border-radius: 8px;
+      background: #f9f9f9;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .meta { font-size: 0.9em; color: #555; }
+    a {
+      color: #0077cc;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    button {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #0077cc;
+      color: white;
+    }
+    button:hover {
+      background-color: #005fa3;
+    }
+  </style>
+</head>
+<body>
+  <!-- ✅ Main heading -->
+  <h1>📰 News Report</h1>
+  <p style="text-align:center;">Latest headlines from today</p>
+
+  <button id="loadDataBtn">Load Today’s News</button>
+  <div id="dataContainer"></div>
+
+  <script>
+    // ✅ Real news dataset (today’s news)
+    const items = [
+      {
+        title: "PM Modi to visit 5 states, inaugurate ₹71,850 crore projects",
+        author: "Times of India",
+        examples: "Projects, Trains, Infrastructure",
+        link: "https://timesofindia.indiatimes.com/city/delhi/pm-narendra-modi-to-visit-5-states-from-sept-13-15-will-inaugurate-projects-worth-rs-71850-crore-flag-off-3-express-trains/articleshow/123848793.cms"
+      },
+      {
+        title: "Indian Railways to launch new Rajdhani Express after 6 years",
+        author: "Times of India",
+        examples: "Railways, Mizoram, Delhi",
+        link: "https://timesofindia.indiatimes.com/life-style/travel/news/september-13-launch-railways-to-flag-off-new-rajdhani-express-after-6-year-gap-route-retails-inside/articleshow/123848436.cms"
+      },
+      {
+        title: "India poised to export sugar in 2025/26 due to ample stocks",
+        author: "Reuters",
+        examples: "Agriculture, Sugar, Exports",
+        link: "https://www.reuters.com/world/india/india-poised-export-sugar-new-season-due-ample-stocks-2025-09-12/"
+      },
+      {
+        title: "India’s retail inflation rises to 2.07% in August",
+        author: "Reuters",
+        examples: "Inflation, Economy, Food Prices",
+        link: "https://www.reuters.com/world/india/indias-retail-inflation-rises-207-august-2025-09-12/"
+      },
+      {
+        title: "CAGs of 29 nations pledge cybersecurity focus with AI & ML",
+        author: "Times of India",
+        examples: "Cybersecurity, AI, Audits",
+        link: "https://timesofindia.indiatimes.com/india/cags-of-29-nations-pledge-focus-on-cybersecurity-audits-adopt-ai-and-ml/articleshow/123853560.cms"
+      },
+      {
+        title: "India eyes $4.5 billion Saudi jewellery market",
+        author: "Economic Times",
+        examples: "Trade, Jewellery, Saudi Arabia",
+        link: "https://m.economictimes.com/small-biz/trade/exports/insights/india-eyes-4-5-billion-saudi-jewellery-market-as-sajex-2025-opens-new-trade-front/articleshow/123846476.cms"
+      }
+    ];
+
+    // ✅ Display news
+    document.getElementById('loadDataBtn').addEventListener('click', () => {
+      const container = document.getElementById('dataContainer');
+      container.innerHTML = '';
+
+      items.forEach(item => {
+        const div = document.createElement('div');
+        div.classList.add('item');
+
+        div.innerHTML = `
+          <h3><a href="${item.link}" target="_blank">${item.title}</a></h3>
+          <p><strong>Source:</strong> ${item.author}</p>
+          <p><strong>Category:</strong> ${item.examples}</p>
+          <p><a href="${item.link}" target="_blank">Read More</a></p>
+        `;
+
+        container.appendChild(div);
+      });
+    });
+  </script>
+</body>
+</html>
